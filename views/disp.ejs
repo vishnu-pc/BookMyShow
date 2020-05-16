@@ -1,0 +1,14 @@
+student details of CSE Dept
+  <ul class="student">
+  <% for(var i=0; i<student.length; i++) {%>
+    <li class="employees">
+      <span> <%= " usn: " +student[i].usn+"."%></span>
+      <span><%=" Name: " +student[i].name%></span>
+      <span><%=" semester: " +student[i].sem%></span>
+      <span><%=" backlog: " +student[i].bck%></span>
+      <span><%=" cgpa: " +student[i].cgpa%></span>
+      <span><%=" extra curicular: " +student[i].exc%></span>
+      <span><%=" proctor: " +student[i].proc%></span>
+    </li>
+  <% } %>
+</ul>
