@@ -5,7 +5,7 @@
     <style>
        .t1
        {
-           background-color:gold;
+           background-color:white;
        }
     </style>
 </head>
@@ -13,22 +13,15 @@
 <body ng-app="myApp" class="t1">
     <form ng-controller='appController' ng-submit="send()">
       <!--send() function from the controller is called on form submission -->
-    <h2>Dear adminstrator please enter the details of new students </h2> 
-		<label for="usn" >usn: </label><br />
-            <input type="text" id="usn" ng-model="data.usn" /> <br />
-        <label for="name"> Name</label><br />
-             <input type="text" id="name" ng-model="data.name" /> <br /> <br />
-
-        <label for="backlog"> backlog</label><br />
-            <input type="text" id="bck" ng-model="data.bck" /> <br /> <br />       
-        <label for="cgpa"> cgpa</label><br />
-            <input type="text" id="cgpa" ng-model="data.cgpa" /> <br /> <br />       
-        <label for="semester"> semester</label><br />
-            <input type="text" id="sem" ng-model="data.sem" /> <br /> <br />
-        <label for="percentage">Extra ciricular activities</label><br />
-            <input type="text" id="exc" ng-model="data.exc" /> <br /> <br />    
-        <label for="percentage">Proctor Name</label><br />
-            <input type="text" id="proc" ng-model="data.proc" /> <br /> <br />                         
+    <h2>Would You like to buy tickets for this movie? </h2> 
+		<label for="Event-Number" >Event Number: </label><br />
+            <input type="text" id="Eno" ng-model="data.Eno" /> <br />
+        <label for="Event-Name"> Name:</label><br />
+             <input type="text" id="Ename" ng-model="data.Ename" /> <br /> <br />
+        <label for="Location"> Location:</label><br />
+            <input type="text" id="loc" ng-model="data.loc" /> <br /> <br />       
+        <label for="Time"> Time:</label><br />
+            <input type="text" id="time" ng-model="data.time" /> <br /> <br />                              
         <input type="submit" ng-click="Submit">
         <div>
             <img src="https://www.igauge.in/api/media/ratings.logo/2e98d46f78154927bdc56a83afbf25ad" alt="msrit logo">

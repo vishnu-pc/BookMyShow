@@ -5,7 +5,7 @@ var ejs = require('ejs');
 var MongoClient = require('mongodb').MongoClient;
 var app = express();  
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
-// Connect to the db
+// Connect to the db 
 
 MongoClient.connect("mongodb://127.0.0.1/BookMyShow", function(err, db) {
  if(!err) {
@@ -37,17 +37,14 @@ app.post('/process_post', function (req, res) {
     /*response has to be in the form of a JSON*/
     req.body.serverMessage = "NodeJS replying to angular"
         /*adding a new field to send it to the angular Client */
-    console.log("Sent data are (POST):usn :"+req.body.usn+"  name="+req.body.name+"cgpa:"+req.body.cgpa+"12th per"+req.body.per+"backlog"+req.body.bck+"semester"+req.body.sem+"extra curicular"+req.body.exc);
+    //console.log("Sent data are (POST):usn :"+req.body.usn+"  name="+req.body.name+"cgpa:"+req.body.cgpa+"12th per"+req.body.per+"backlog"+req.body.bck+"semester"+req.body.sem+"extra curicular"+req.body.exc);
     // Submit to the DB
-    var usn = parseInt(req.body.usn);
-    var name = req.body.name;
-    var bck=parseInt(req.body.bck);
-    var sem=parseInt(req.body.sem);
-    var proc=req.body.proc;
-    var exc=req.body.exc;
-    var cgpa=parseInt(req.body.cgpa);
-  db.collection('student').insert({usn:usn,name:name,bck:bck,sem:sem,cgpa:cgpa,proc:proc,exc:exc});
-    res.end("student Inserted-->"+JSON.stringify(req.body));
+    var Eno = parseInt(req.body.Eno);
+    var Ename = req.body.Ename;
+    var loc = req.body.loc;
+    var time = req.body.time;
+  db.collection('Event').insert({Eno:Eno,Ename:Ename,loc:loc,time:time});
+    res.end("Movie Inserted-->"+JSON.stringify(req.body));
     /*Sending the respone back to the angular Client */
 });
 
@@ -149,22 +146,21 @@ app.get('/display', function (req, res) {
     }
   });*/
 //-------------DISPLAY USING EMBEDDED JS -----------
- db.collection('student').find().sort({usn:1}).toArray(
+ db.collection('Event').find().sort({Eno:1}).toArray(
     function(err , i){
         if (err) return console.log(err)
-        res.render('disp.ejs',{student: i})  
+        res.render('disp.ejs',{Event: i})  
      })
 //---------------------// sort({empid:-1}) for descending order -----------//
 }) 
-app.get('/about', function (req, res) {  
-   console.log("Got a GET request for /about");  
-   res.send('MSRIT, Dept. of CSE');  
+app.get('/help', function (req, res) {  
+   console.log("Got a GET request for /help");  
+   res.send('BookMyShow can help you find tickets on literally anything you wish for!');  
 })  
  
-var server = app.listen(3000, function () {  
-var host = server.address().address  
-  var port = server.address().port  
-console.log("Example app listening at http://%s:%s", host, port)  
+var server = app.listen(3000, function () {    
+var port = server.address().port  
+console.log("listening on http://localhost:%s/", port)  
 })  
 }
 else
