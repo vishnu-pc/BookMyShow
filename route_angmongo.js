@@ -7,15 +7,16 @@ var app = express();
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 // Connect to the db
 
-MongoClient.connect("mongodb://127.0.0.1/mydb", function(err, db) {
+MongoClient.connect("mongodb://127.0.0.1/BookMyShow", function(err, db) {
  if(!err) {
-    console.log("We are connected");
+    console.log("Connected to BookMyShow Database");
 
 app.use(express.static('public')); //making public directory as static directory  
 app.use(bodyParser.json());
+
 app.get('/', function (req, res) {  
-   console.log("Got a GET request for the homepage");  
-   res.send('<h1>Welcome to MSRIT</h1>');  
+   console.log("Got a GET request for homepage");  
+   res.send('<h1>HelloWorld!</h1>');  
 })
 /*JS client side files has to be placed under a folder by name 'public' */
 
@@ -26,6 +27,7 @@ app.get('/index.html', function (req, res) {
 app.get('/insert.html', function (req, res) {
     res.sendFile( __dirname + "/" + "insert.html" );
 })
+
 /* to access the posted data from client using request body (POST) or request params(GET) */
 //-----------------------POST METHOD-------------------------------------------------
 app.post('/process_post', function (req, res) {
