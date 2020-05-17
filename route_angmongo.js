@@ -56,10 +56,10 @@ app.get('/update.html', function (req, res) {
 
 app.get("/update", function(req, res) {
   var Eno = parseInt(req.query.Eno);
-  var time = req.query.time
+  var date = req.query.date
  
   db.collection('Event', function (err, data) {
-        data.update({"Eno": Eno} , {$set:{"time": time}},{multi:true},
+        data.update({"Eno": Eno} , {$set:{"date": date}},{multi:true},
             function(err, result){
         if (err) {
           console.log("Failed to update data.");
