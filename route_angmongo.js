@@ -5,12 +5,13 @@ var ejs = require('ejs');
 var MongoClient = require('mongodb').MongoClient;
 var app = express();  
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
-// Connect to the db 
 
+// Connect to the db 
 MongoClient.connect("mongodb://127.0.0.1/BookMyShow", function(err, db) {
  if(!err) {
     console.log("Connected to BookMyShow Database");
 
+/*JS client side files has to be placed under a folder by name 'public' */
 app.use(express.static('public')); //making public directory as static directory  
 app.use(bodyParser.json());
 
@@ -18,7 +19,6 @@ app.get('/', function (req, res) {
    console.log("Got a GET request for homepage");  
    res.send('<h1>HelloWorld!</h1>');  
 })
-/*JS client side files has to be placed under a folder by name 'public' */
 
 app.get('/index.html', function (req, res) {  
    res.sendFile( __dirname + "/" + "index.html" );    
@@ -35,7 +35,7 @@ app.post('/process_post', function (req, res) {
     console.log(req.body);
   res.setHeader('Content-Type', 'text/html');
     /*response has to be in the form of a JSON*/
-    req.body.serverMessage = "NodeJS replying to angular"
+    req.body.serverMessage = "Added Succesfully"
         /*adding a new field to send it to the angular Client */
     //console.log("Sent data are (POST):usn :"+req.body.usn+"  name="+req.body.name+"cgpa:"+req.body.cgpa+"12th per"+req.body.per+"backlog"+req.body.bck+"semester"+req.body.sem+"extra curicular"+req.body.exc);
     // Submit to the DB
@@ -44,7 +44,7 @@ app.post('/process_post', function (req, res) {
     var loc = req.body.loc;
     var time = req.body.time;
   db.collection('Event').insert({Eno:Eno,Ename:Ename,loc:loc,time:time});
-    res.end("Movie Inserted-->"+JSON.stringify(req.body));
+    res.end("You have Purchased the ticket -->"+JSON.stringify(req.body));
     /*Sending the respone back to the angular Client */
 });
 
@@ -73,7 +73,6 @@ app.get("/update", function(req, res) {
   var Eno = parseInt(req.query.Eno);
   var time = req.query.time
  
-  //-----------------------------------------
   db.collection('Event', function (err, data) {
         data.update({"Eno": Eno} , {$set:{"time": time}},{multi:true},
             function(err, result){
@@ -81,11 +80,12 @@ app.get("/update", function(req, res) {
           console.log("Failed to update data.");
       } else {
         res.send(result);
-        console.log("student Updated")
+        console.log("Event Time Updated")
       }
         });
     });
 })  
+
 //...............search........................................................
 app.get('/search.html', function (req, res) {  
    res.sendFile( __dirname + "/" + "search.html" );    
@@ -142,6 +142,7 @@ app.get('/display', function (req, res) {
      })
 //---------------------// sort({empid:-1}) for descending order -----------//
 }) 
+
 app.get('/help', function (req, res) {  
    console.log("Got a GET request for /help");  
    res.send('BookMyShow can help you find tickets on literally anything you wish for!');  

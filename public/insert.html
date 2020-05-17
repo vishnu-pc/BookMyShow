@@ -14,15 +14,12 @@
     <form ng-controller='appController' ng-submit="send()">
       <!--send() function from the controller is called on form submission -->
     <h2>Would You like to buy tickets for this movie? </h2> 
-		<label for="Event-Number" >Unique Event Number: </label><br />
-            <input type="text" id="Eno" ng-model="data.Eno" /> <br />
-        <label for="Event-Name"> Name:</label><br />
-             <input type="text" id="Ename" ng-model="data.Ename" /> <br /> <br />
-        <label for="Location"> Location:</label><br />
-            <input type="text" id="loc" ng-model="data.loc" /> <br /> <br />       
-        <label for="Time"> Time:</label><br />
-            <input type="text" id="time" ng-model="data.time" /> <br /> <br />                              
-        <input type="submit" ng-click="Submit">
+
+        <div ng-init = "data.Eno = '7'"></div>
+        <div ng-init = "data.Ename = 'Batman'"></div>
+        <div ng-init = "data.loc = 'Kerala'"></div>
+        <div ng-init = "data.time = '6PM'"></div>
+        <button ng-click="submit">Add to cart</button>
        <div><pre>{{response.data}}</pre>  </div>
     </form>
  
