@@ -126,21 +126,22 @@ app.get("/delete", function(req, res) {
 
 app.get('/display', function (req, res) { 
 //-----DISPLAY IN JSON FORMAT  -------------------------
-/*db.collection('student').find({}).toArray(function(err, docs) {
+/*db.collection('Event').find({}).toArray(function(err, docs) {
     if (err) {
       console.log("Failed to get data.");
     } else 
   {
     res.status(200).json(docs);
     }
-  });*/
+  });
+*/
 //-------------DISPLAY USING EMBEDDED JS -----------
- db.collection('Event').find().sort({Eno:1}).toArray(
+db.collection('Event').find().sort({Eno:1}).toArray(
     function(err , i){
         if (err) return console.log(err)
         res.render('disp.ejs',{Event: i})  
      })
-//---------------------// sort({empid:-1}) for descending order -----------//
+     //---------------------// sort({empid:-1}) for descending order -----------//
 }) 
 
 app.get('/help', function (req, res) {  

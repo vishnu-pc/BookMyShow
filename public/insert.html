@@ -6,6 +6,9 @@
 </head>
 <script> var myModule = angular.module("myApp",[])  </script>
 <body ng-app="myApp" class="t1">
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="index.html">Home</a>
+    </nav>
     <form ng-controller='appController' ng-submit="send()"> <!--send() function from the controller is called on form submission -->
 
         <div ng-init = "data.Eno = '1'"></div>
@@ -16,10 +19,11 @@
         <div class="card mb-3">
         <img src="https://in.bmscdn.com/nmcms/events/banner/desktop/media-desktop-beyond-limits-virtual-run-20-2020-5-13-t-19-40-3.jpg" class="card-img-top" alt="..." >
         <div class="card-body">
-          <h5 class="card-title">Beyond Limits-Virtual Run 2.0<div class="float-right"><button ng-click="submit" class="btn btn-primary btn-lg">Book Now</button></div></h5>
+          <h5 class="card-title">Beyond Limits-Virtual Run 2.0<div class="float-right">
+        <button ng-click="submit" class="btn btn-primary btn-lg">Book Now</button></div></h5>
           <p class="card-text">Amid this tough time of lockdown, a lot of people are facing issues in maintaining their daily life because of no work. Townscript Originals brings to you Beyond Limits - Indoor Virtual Run, an opportunity to support the needy by running indoor.</p>
           <p class="card-text"><small class="text-muted">Running</small></p>
-          
+          <pre><div class="alert alert-success" role="alert"> {{response.data}} </div></pre>
           <div class="card-footer">
             <h5 class="card-title">About</h5>
             <p class="card-text">Amid this tough time of lockdown, a lot of people are facing issues in maintaining their daily life because of no work. Townscript Originals brings to you Beyond Limits - Indoor Virtual Run, an opportunity to support the needy by running indoor.</p>
@@ -36,7 +40,6 @@
         </div>
         </div>
 
-       <div><pre>{{response.data}}</pre>  </div>
     </form>
 
      <script>
@@ -69,7 +72,6 @@
             }
         });
     </script>
-    <a href="index.html">Back</a>
 </body>
 </html>
 
