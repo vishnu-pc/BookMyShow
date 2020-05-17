@@ -49,3 +49,7 @@ node route_angmongo.js
 
 * https://www.youtube.com/watch?v=UYh6EvpQquw&t=342s
 
+### Temp
+
+* background-image:url(https://img.freepik.com/free-vector/orange-smoke-yellow-background_1182-688.jpg?size=338&ext=jpg);
+

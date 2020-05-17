@@ -70,11 +70,12 @@ app.get('/update.html', function (req, res) {
 })
 
 app.get("/update", function(req, res) {
-  var name1=req.query.name;
+  var Eno = parseInt(req.query.Eno);
+  var time = req.query.time
  
   //-----------------------------------------
-  db.collection('student', function (err, data) {
-        data.update({"name":name1},{$set:{"name":"newstd"}},{multi:true},
+  db.collection('Event', function (err, data) {
+        data.update({"Eno": Eno} , {$set:{"time": time}},{multi:true},
             function(err, result){
         if (err) {
           console.log("Failed to update data.");
@@ -92,8 +93,8 @@ app.get('/search.html', function (req, res) {
 
 app.get("/search", function(req, res) {
   
-  var usnnum=parseInt(req.query.usn);
-    db.collection('student').find({usn:usnnum}).toArray(function(err, docs) {
+  var Eno = parseInt(req.query.Eno);
+    db.collection('Event').find({"Eno":Eno}).toArray(function(err, docs) {
     if (err) {
       console.log(err.message+ "Failed to get data.");
     } else {
@@ -101,40 +102,28 @@ app.get("/search", function(req, res) {
     }
   });
   });
-  app.get("/search", function(req, res) {
-
-    var bcknum=parseInt(req.query.bck);
-      db.collection('student').find({bck:bcknum}).toArray(function(err, docs) {
-      if (err) {
-        console.log(err.message+ "Failed to get data.");
-      } else {
-        res.status(200).json(docs);
-      }
-    });
-    });
    
-    
-
-//--------------DELETE------------------------------------------
+//--------------DELETE------------------------------------------//
 app.get('/delete.html', function (req, res) {  
    res.sendFile( __dirname + "/" + "delete.html" );    
 })
 
 app.get("/delete", function(req, res) {
  
-  var usnnum=parseInt(req.query.usn);
-  db.collection('student', function (err, data) {
-        data.remove({"usn":usnnum}, function(err, result){
+  var Eno = parseInt(req.query.Eno);
+  db.collection('Event', function (err, data) {
+        data.remove({"Eno" : Eno}, function(err, result){
         if (err) {
           console.log("Failed to remove data.");
       } else {
         res.send(result);
-        console.log("student  Deleted")
+        console.log("Ticket Deleted for Event no -> "+Eno)
       }
         });
     });
     
   });
+
 app.get('/display', function (req, res) { 
 //-----DISPLAY IN JSON FORMAT  -------------------------
 /*db.collection('student').find({}).toArray(function(err, docs) {

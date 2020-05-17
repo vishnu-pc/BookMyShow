@@ -14,7 +14,7 @@
     <form ng-controller='appController' ng-submit="send()">
       <!--send() function from the controller is called on form submission -->
     <h2>Would You like to buy tickets for this movie? </h2> 
-		<label for="Event-Number" >Event Number: </label><br />
+		<label for="Event-Number" >Unique Event Number: </label><br />
             <input type="text" id="Eno" ng-model="data.Eno" /> <br />
         <label for="Event-Name"> Name:</label><br />
              <input type="text" id="Ename" ng-model="data.Ename" /> <br /> <br />
@@ -23,13 +23,11 @@
         <label for="Time"> Time:</label><br />
             <input type="text" id="time" ng-model="data.time" /> <br /> <br />                              
         <input type="submit" ng-click="Submit">
-        <div>
-            <img src="https://www.igauge.in/api/media/ratings.logo/2e98d46f78154927bdc56a83afbf25ad" alt="msrit logo">
-            </div>
        <div><pre>{{response.data}}</pre>  </div>
     </form>
  
 <a href="index.html">Back</a>
+
      <script>
 	 myModule.controller ("appController",
         function appController($scope, $http) {
