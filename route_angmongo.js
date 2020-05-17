@@ -32,11 +32,11 @@ app.get('/insert.html', function (req, res) {
 //-----------------------POST METHOD-------------------------------------------------
 app.post('/process_post', function (req, res) {
     /* Handling the AngularJS post request*/
-    console.log(req.body);
+    console.log("Inserted Succesfully: "+JSON.stringify(req.body));
   res.setHeader('Content-Type', 'text/html');
     /*response has to be in the form of a JSON*/
     req.body.serverMessage = "Added Succesfully"
-        /*adding a new field to send it to the angular Client */
+    /*adding a new field to send it to the angular Client */
     //console.log("Sent data are (POST):usn :"+req.body.usn+"  name="+req.body.name+"cgpa:"+req.body.cgpa+"12th per"+req.body.per+"backlog"+req.body.bck+"semester"+req.body.sem+"extra curicular"+req.body.exc);
     // Submit to the DB
     var Eno = parseInt(req.body.Eno);
@@ -44,7 +44,7 @@ app.post('/process_post', function (req, res) {
     var loc = req.body.loc;
     var time = req.body.time;
   db.collection('Event').insert({Eno:Eno,Ename:Ename,loc:loc,time:time});
-    res.end("You have Purchased the ticket -->"+JSON.stringify(req.body));
+    res.end("Your ticket has been purchased succesfully");
     /*Sending the respone back to the angular Client */
 });
 
