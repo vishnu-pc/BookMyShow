@@ -42,27 +42,12 @@ app.post('/process_post', function (req, res) {
     var Eno = parseInt(req.body.Eno);
     var Ename = req.body.Ename;
     var loc = req.body.loc;
-    var time = req.body.time;
-  db.collection('Event').insert({Eno:Eno,Ename:Ename,loc:loc,time:time});
+    var date = req.body.date;
+  db.collection('Event').insert({Eno:Eno,Ename:Ename,loc:loc,date:date});
     res.end("Your ticket has been purchased succesfully");
     /*Sending the respone back to the angular Client */
 });
 
-//--------------------------GET METHOD-------------------------------
-app.get('/process_get', function (req, res) { 
-// Submit to the DB
-  var newStd = req.query;
-  var usn =req.query['usn'];
-    var name = req.query['name'];
-    var proc=req.query['proc'];
-    var cgpa=parseInt(req.query['cgpa']);
-    var sem=parseInt(req.query['sem']);
-    var bck=parseInt(req.query['bck']);
-    var exc=req.query['exc'];
-  db.collection('student').insert({usn:usn,name:name,bck:bck,sem:sem,cgpa:cgpa,proc:proc,exc:exc}); 
-    console.log("Sent data are (GET): usn :"+usn+" name :"+name+"cgpa:"+cgpa+"12th per"+per+"backlog"+bck+"semester"+sem+"proctor"+proc+"extra curicular"+exc);
-    res.end("student Inserted-->"+JSON.stringify(newStd));
-}) 
 
 //--------------UPDATE------------------------------------------
 app.get('/update.html', function (req, res) {
