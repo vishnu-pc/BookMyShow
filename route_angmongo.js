@@ -5,6 +5,7 @@ var ejs = require('ejs');
 var MongoClient = require('mongodb').MongoClient;
 var app = express();  
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
+const path = require('path')
 
 // Connect to the db 
 MongoClient.connect("mongodb://127.0.0.1/BookMyShow", function(err, db) {
@@ -27,6 +28,21 @@ app.get('/index.html', function (req, res) {
 app.get('/insert.html', function (req, res) {
     res.sendFile( __dirname + "/" + "insert.html" );
 })
+
+//...............Authenticaltion........................................................
+
+app.get("/authenticate", function(req, res) {
+ 
+ var username = req.query.usr;
+ var password = req.query.pwd;
+
+   if((username == "vishnupc1999")&&(password == "open1234")) {
+    res.sendFile('C:/Users/Vishnu/Desktop/Code/BookMyShow/public/main.html');
+   } 
+   else {
+    res.send("C:/Users/Vishnu/Desktop/Code/BookMyShow/public/index.html");
+   }
+ });
 
 /* to access the posted data from client using request body (POST) or request params(GET) */
 //-----------------------POST METHOD-------------------------------------------------
