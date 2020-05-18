@@ -5,14 +5,14 @@
 ### Important
 
 * In run.js
-  * Change line 40 & 43: res.sendFile('C:/.../BookMyShow/public/main.html'); To appropriate directory
-  * For login 
-    * Username: bookmyshow
-    * Password: open1234
+  * Change line 38 & 41: res.sendFile('C:/.../BookMyShow/public/main.html'); To appropriate directory
+* For login 
+  * Username: bookmyshow
+  * Password: open1234
 
 ### How to start the Mongo Server
 
-* Run in CMD
+* Run in CMD (Use similar dbpath)
 ```
 cd C:\Program Files\MongoDB\Server\4.2\bin\
 
@@ -30,7 +30,7 @@ nodemon run.js
 ### Procedure:
 
 * Go to localhost:3000/
-* To enter data use Postman Software 
+* To enter data from backend use Postman Software 
   * Enter the data in JSON format
 
 ### Enter data in JSON format: 

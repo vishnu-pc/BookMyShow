@@ -12,7 +12,6 @@ MongoClient.connect("mongodb://127.0.0.1/BookMyShow", function(err, db) {
  if(!err) {
     console.log("Connected to BookMyShow Database");
 
-/*JS client side files has to be placed under a folder by name 'public' */
 app.use(express.static('public')); //making public directory as static directory  
 app.use(bodyParser.json());
 
@@ -30,7 +29,6 @@ app.get('/insert.html', function (req, res) {
 })
 
 //...............Authenticaltion........................................................
-
 app.get("/authenticate", function(req, res) {
  
  var username = req.query.usr;
@@ -66,10 +64,6 @@ app.post('/process_post', function (req, res) {
 
 
 //--------------UPDATE------------------------------------------
-app.get('/update.html', function (req, res) {
-    res.sendFile( __dirname + "/" + "update.html" );
-})
-
 app.get("/update", function(req, res) {
   var Eno = parseInt(req.query.Eno);
   var date = req.query.date
@@ -88,10 +82,6 @@ app.get("/update", function(req, res) {
 })  
 
 //...............search........................................................
-app.get('/search.html', function (req, res) {  
-   res.sendFile( __dirname + "/" + "search.html" );    
-})
-
 app.get("/search", function(req, res) {
   
   var Eno = parseInt(req.query.Eno);
@@ -105,10 +95,6 @@ app.get("/search", function(req, res) {
   });
    
 //--------------DELETE------------------------------------------//
-app.get('/delete.html', function (req, res) {  
-   res.sendFile( __dirname + "/" + "delete.html" );    
-})
-
 app.get("/delete", function(req, res) {
  
   var Eno = parseInt(req.query.Eno);
@@ -126,23 +112,13 @@ app.get("/delete", function(req, res) {
   });
 
 app.get('/display', function (req, res) { 
-//-----DISPLAY IN JSON FORMAT  -------------------------
-/*db.collection('Event').find({}).toArray(function(err, docs) {
-    if (err) {
-      console.log("Failed to get data.");
-    } else 
-  {
-    res.status(200).json(docs);
-    }
-  });
-*/
+
 //-------------DISPLAY USING EMBEDDED JS -----------
 db.collection('Event').find().sort({Eno:1}).toArray(
     function(err , i){
         if (err) return console.log(err)
         res.render('disp.ejs',{Event: i})  
      })
-     //---------------------// sort({empid:-1}) for descending order -----------//
 }) 
 
 app.get('/help', function (req, res) {  
@@ -157,5 +133,4 @@ console.log("listening on http://localhost:%s/", port)
 }
 else
 {   db.close();  }
-  
 });
