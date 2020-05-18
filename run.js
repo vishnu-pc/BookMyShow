@@ -36,7 +36,7 @@ app.get("/authenticate", function(req, res) {
  var username = req.query.usr;
  var password = req.query.pwd;
 
-   if((username == "vishnupc1999")&&(password == "open1234")) {
+   if((username == "bookmyshow")&&(password == "open1234")) {
     res.sendFile('C:/Users/Vishnu/Desktop/Code/BookMyShow/public/main.html');
    } 
    else {

@@ -2,6 +2,14 @@
 
 ## Documentation 
 
+### Important
+
+* In run.js
+  * Change line 40 & 43: res.sendFile('C:/.../BookMyShow/public/main.html'); To appropriate directory
+  * For login 
+    * Username: bookmyshow
+    * Password: open1234
+
 ### How to start the Mongo Server
 
 * Run in CMD
@@ -17,7 +25,7 @@ mongod.exe --dbpath C:\Users\Vishnu\Desktop\Code\Z-Small-Projects\MongoDb-data
 ```
 cd C:\Users\Vishnu\Desktop\Code\BookMyShow
 
-node route_angmongo.js
+nodemon run.js
 ```
 ### Procedure:
 
@@ -48,8 +56,4 @@ node route_angmongo.js
 ### Links
 
 * https://www.youtube.com/watch?v=UYh6EvpQquw&t=342s
-
-### Temp
-
-* background-image:url(https://img.freepik.com/free-vector/orange-smoke-yellow-background_1182-688.jpg?size=338&ext=jpg);
 
