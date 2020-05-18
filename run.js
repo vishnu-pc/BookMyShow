@@ -38,7 +38,7 @@ app.get("/authenticate", function(req, res) {
     res.sendFile('C:/Users/Vishnu/Desktop/Code/BookMyShow/public/main.html');
    } 
    else {
-    res.send("C:/Users/Vishnu/Desktop/Code/BookMyShow/public/index.html");
+    res.sendFile("C:/Users/Vishnu/Desktop/Code/BookMyShow/public/index.html");
    }
  });
 
