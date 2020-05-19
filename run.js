@@ -35,10 +35,10 @@ app.get("/authenticate", function(req, res) {
  var password = req.query.pwd;
 
    if((username == "bookmyshow")&&(password == "open1234")) {
-    res.sendFile('C:/Users/Vishnu/Desktop/Code/BookMyShow/public/main.html');
+    res.sendFile(path.join(__dirname, 'public','main.html'));
    } 
    else {
-    res.sendFile("C:/Users/Vishnu/Desktop/Code/BookMyShow/public/index.html");
+    res.sendFile(path.join(__dirname, 'public','index.html'));
    }
  });
 

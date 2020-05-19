@@ -2,10 +2,8 @@
 
 ## Documentation 
 
-### Important
+### Credentials
 
-* In run.js
-  * Change line 38 & 41: res.sendFile('C:/.../BookMyShow/public/main.html'); To appropriate directory
 * For login 
   * Username: bookmyshow
   * Password: open1234
